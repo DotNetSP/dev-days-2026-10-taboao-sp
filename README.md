@@ -1,6 +1,20 @@
 # dev-days-2026-10-taboao-sp
 Conteúdos do evento "Dev Days", realizando no Taboão da Serra-SP em 17/10/2026.
 
+---
+
+LinkedIn dos palestrantes:
+- Carlos Machel - https://www.linkedin.com/in/carlosmachel/
+- Elton Bordim - https://www.linkedin.com/in/elton-bordim/
+- Milton Camara - https://www.linkedin.com/in/miltoncamara/
+- Renato Groffe - https://www.linkedin.com/in/renatogroffe/
+
+Conteúdos em inglês da Microsoft: https://github.com/github/dev-days/tree/main/content
+
+Acesse este conteúdo pelo QRCode (deixe também um star ⭐ no repo apoiando):
+
+![QRCode](img/qrcode-01.png)
+
 ## GitHub Copilot App
 
 Configurando o GitHub Copilot App para execução em um Ubuntu x64:
