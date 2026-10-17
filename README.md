@@ -48,3 +48,15 @@ __Planeje agora como seria o deployment desta solução utilizando GitHub Pages_
 Algumas interações:
 
 ![GitHub Copilot CLI](img/githubcopilotcli-01.png)
+
+## Workshop guiado para GitHub Pages
+
+[Acesse o workshop](https://dotnetsp.github.io/dev-days-2026-10-taboao-sp/):
+duas trilhas de 35 minutos para começar do zero com o **GitHub Copilot app**
+e o **GitHub Copilot CLI**, com exercícios, prompts e capturas de tela.
+
+O site está em [`docs/index.html`](docs/index.html) e também pode ser aberto
+localmente, sem instalação ou servidor. Para publicar, selecione **GitHub
+Actions** em **Settings → Pages → Source**. O workflow
+[`Publicar workshop no GitHub Pages`](.github/workflows/pages.yml) publica
+somente a pasta `docs/`, preservando os demais materiais do repositório.

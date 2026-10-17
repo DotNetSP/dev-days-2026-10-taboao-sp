@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Workshop Dev Days: primeiros passos com GitHub Copilot app e Copilot CLI em duas trilhas práticas de 35 minutos, com quizzes, issues e GitHub Pages.">
+  <title>Primeiros passos | Dev Days Workshops</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./workshop.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topbar">
+    <a class="brand" href="#visao-geral">Dev Days Workshops</a>
+    <div class="search" role="search">
+      <label class="sr-only" for="search">Buscar nas lições</label>
+      <input id="search" type="search" placeholder="Buscar nas lições…" autocomplete="off" aria-controls="search-results">
+      <div class="search-results" id="search-results" hidden></div>
+    </div>
+    <div class="top-actions">
+      <a class="repo-link" href="https://github.com/DotNetSP/dev-days-2026-10-taboao-sp" aria-label="Repositório do evento no GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.3 1.8 1.3 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg></a>
+      <label class="theme-label"><span class="sr-only">Tema</span><select id="theme"><option value="auto">◐ Automático</option><option value="light">☀ Claro</option><option value="dark">☾ Escuro</option></select></label>
+      <span class="language">Português (Brasil)</span>
+    </div>
+  </header>
+  <details class="mobile-menu" id="mobile-menu"><summary>Menu do workshop</summary><nav aria-label="Lições no celular">
+    <a data-lesson-link href="#visao-geral">Visão geral</a>
+    <a data-lesson-link href="#app-preparar">App · 1. Preparar e se localizar</a>
+    <a data-lesson-link href="#app-criar">App · 2. Criar e testar o quiz</a>
+    <a data-lesson-link href="#app-inspecionar">App · 3. Código e contexto visual</a>
+    <a data-lesson-link href="#app-issue">App · 4. Melhorar por uma issue</a>
+    <a data-lesson-link href="#app-pages">App · 5. Planejar e publicar</a>
+    <a data-lesson-link href="#cli-preparar">CLI · 1. Preparar o terminal</a>
+    <a data-lesson-link href="#cli-criar">CLI · 2. Criar e testar o quiz</a>
+    <a data-lesson-link href="#cli-revisar">CLI · 3. Conferir código e alterações</a>
+    <a data-lesson-link href="#cli-issue">CLI · 4. Melhorar por uma issue</a>
+    <a data-lesson-link href="#cli-pages">CLI · 5. Planejar e publicar</a>
+  </nav></details>
+  <div class="layout">
+    <aside class="sidebar"><nav aria-label="Lições do workshop">
+      <a data-lesson-link href="#visao-geral">Visão geral</a>
+      <details open><summary>GitHub Copilot app</summary><div class="lesson-links">
+        <a data-lesson-link href="#app-preparar">1. Preparar e se localizar</a>
+        <a data-lesson-link href="#app-criar">2. Criar e testar o quiz</a>
+        <a data-lesson-link href="#app-inspecionar">3. Código e contexto visual</a>
+        <a data-lesson-link href="#app-issue">4. Melhorar por uma issue</a>
+        <a data-lesson-link href="#app-pages">5. Planejar e publicar</a>
+      </div></details>
+      <details open><summary>GitHub Copilot CLI</summary><div class="lesson-links">
+        <a data-lesson-link href="#cli-preparar">1. Preparar o terminal</a>
+        <a data-lesson-link href="#cli-criar">2. Criar e testar o quiz</a>
+        <a data-lesson-link href="#cli-revisar">3. Conferir código e alterações</a>
+        <a data-lesson-link href="#cli-issue">4. Melhorar por uma issue</a>
+        <a data-lesson-link href="#cli-pages">5. Planejar e publicar</a>
+      </div></details>
+    </nav><div class="sidebar-note"><strong>Seu progresso nesta página</strong><p>App: <span id="app-progress">0/5 concluídas</span><br>CLI: <span id="cli-progress">0/5 concluídas</span></p>Sem cadastro ou persistência. Os checkpoints são zerados ao recarregar.</div></aside>
+    <main id="conteudo" tabindex="-1">
+      <div class="breadcrumbs"><a href="#visao-geral">Primeiros passos</a><span aria-hidden="true">/</span><span id="breadcrumb-track">Dev Days</span><span aria-hidden="true">/</span><span id="breadcrumb-lesson">Visão geral</span></div>
+
+      <section class="lesson" id="visao-geral" data-title="Visão geral">
+        <p class="eyebrow">Dev Days · Taboão da Serra · 17 de outubro de 2026</p>
+        <h1 tabindex="-1">Primeiros passos com GitHub Copilot</h1>
+        <p class="lead">Aprenda a usar o GitHub Copilot app e o Copilot CLI construindo dois quizzes do zero. Em 70 minutos, você vai criar uma aplicação, conferir o código, implementar uma melhoria e planejar sua publicação.</p>
+        <h2 id="geral-trilhas">Escolha uma trilha para começar</h2>
+        <div class="track-grid">
+          <a class="track-card" href="#app-preparar"><strong>GitHub Copilot app</strong><span>Quiz sobre a Copa de 2022: 10 perguntas, prévia integrada e contexto visual.</span><small>5 lições · 35 minutos →</small></a>
+          <a class="track-card" href="#cli-preparar"><strong>GitHub Copilot CLI</strong><span>Quiz de capitais: 6 perguntas, interação no terminal e revisão de alterações.</span><small>5 lições · 35 minutos →</small></a>
+        </div>
+        <p>Você pode seguir as duas trilhas em sequência ou acompanhar somente a ferramenta que quer conhecer. Use os botões de anterior/próxima no fim de cada lição; o menu lateral permite pular diretamente para uma etapa.</p>
+        <h2 id="geral-roteiro">Seu roteiro de 70 minutos</h2>
+        <div class="table-scroll" role="region" aria-label="Agenda das duas trilhas" tabindex="0"><table><thead><tr><th scope="col">Etapa</th><th scope="col">App</th><th scope="col">CLI</th></tr></thead><tbody>
+          <tr><td>Preparar</td><td>5 min · projeto e sessão</td><td>5 min · instalação e login</td></tr>
+          <tr><td>Criar e testar</td><td>9 min · quiz da Copa</td><td>9 min · quiz de capitais</td></tr>
+          <tr><td>Inspecionar</td><td>6 min · código e elemento</td><td>6 min · código e diff</td></tr>
+          <tr><td>Melhorar</td><td>8 min · issue de tema</td><td>8 min · issue de tema</td></tr>
+          <tr><td>Planejar e publicar</td><td>7 min · GitHub Pages</td><td>7 min · GitHub Pages</td></tr>
+        </tbody></table></div>
+        <div class="callout"><strong>Instalação antes do encontro, se possível</strong><p>O tempo de login, instalação e deploy pode variar. O objetivo mínimo é ter o quiz local funcionando, uma melhoria verificada e um plano de publicação. O deploy pode ser concluído depois.</p></div>
+        <h2 id="geral-capturas">Como ler os prints</h2>
+        <p>Os números amarelos nas capturas indicam os controles descritos na legenda. Clique na imagem para ampliá-la. As telas mostram o app no Linux; os nomes e a posição de alguns controles podem variar conforme o sistema e a versão instalada.</p>
+        <h2 id="geral-requisitos">Antes de começar</h2>
+        <ul>
+          <li>Conta GitHub e acesso ao Copilot ou configuração de provedor compatível com sua instalação.</li>
+          <li>Git disponível para versionar e publicar. Para criar repositórios e issues, uma conta com as permissões necessárias.</li>
+          <li>Uma pasta de teste sem segredos. Crie os repositórios na sua própria conta GitHub, com nomes disponíveis.</li>
+          <li>Modelo disponível no seu plano; nenhum modelo específico é obrigatório. Revise permissões e consumo de créditos.</li>
+        </ul>
+        <div class="callout warning"><strong>Copilot CLI não é GitHub CLI</strong><p><code>copilot</code> inicia o agente de IA no terminal. <code>gh</code> é outra ferramenta, para operações no GitHub, e pode ser usada pelo agente. Não use a antiga extensão <code>gh copilot</code> como substituta deste laboratório.</p></div>
+        <h2 id="geral-fontes">Material de apoio</h2>
+        <ul class="sources">
+          <li><a href="https://github.com/DotNetSP/dev-days-2026-10-taboao-sp">Repositório do evento</a>: código do guia, slides e materiais complementares.</li>
+          <li><a href="https://github-samples.github.io/copilot-workshops/first-steps/copilot-app/">Workshop de Copilot app</a> e <a href="https://github-samples.github.io/copilot-workshops/first-steps/copilot-cli/">workshop de Copilot CLI</a>: referência de organização e fluxo.</li>
+          <li><a href="https://docs.github.com/en/copilot/get-started/quickstart-copilot-app">Quickstart do app</a>, <a href="https://docs.github.com/en/copilot/get-started/cli-quickstart">quickstart da CLI</a> e <a href="https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference">comandos da CLI</a>: requisitos e controles documentados.</li>
+        </ul>
+        <p class="sources">Para criar issues e publicar no GitHub Pages, você precisa das permissões correspondentes no repositório. Se não tiver acesso, continue com o quiz local e registre o que falta para publicar.</p>
+      </section>
+
+      <section class="lesson" id="app-preparar" data-track="Copilot app" data-title="1. Preparar e se localizar">
+        <p class="eyebrow">Copilot app · 5 minutos · lição 1 de 5</p><h1 tabindex="-1">Preparar e se localizar no app</h1>
+        <p>Você vai criar um quiz da Copa do Mundo masculina de 2022. Primeiro, conheça as três áreas principais do app: navegação, conversa e superfície de trabalho.</p>
+        <h2 id="app-preparar-instalar">Instalar e conectar a pasta</h2>
+        <ol>
+          <li>Baixe o app em <a href="https://gh.io/app">gh.io/app</a>, instale e entre com sua conta. Confira os <a href="https://docs.github.com/en/copilot/get-started/quickstart-copilot-app">requisitos oficiais</a>.</li>
+          <li>Crie uma pasta vazia chamada <code>quizz-copas</code>.</li>
+          <li>Na lateral, ao lado de <strong>Projects</strong>, clique em <strong>+</strong> e escolha <strong>Local folder or repository</strong>. Se sua instalação usar outro nome, procure a opção de adicionar uma pasta local.</li>
+          <li>Ao lado do projeto conectado, use <strong>+</strong> para iniciar uma sessão. Escolha <strong>Interactive</strong> no seletor abaixo do prompt, se disponível.</li>
+        </ol>
+        <details class="help"><summary>No Ubuntu, o arquivo AppImage não executa</summary><p>Dê permissão de execução ao arquivo baixado. Os comandos abaixo se aplicam ao AppImage Linux x64 com esse nome; não os use no macOS ou Windows.</p><div class="prompt"><div class="prompt-header"><span>Terminal Linux · na pasta do download</span><button class="copy-button" type="button">Copiar</button></div><pre><code>chmod +x ./GitHub-Copilot-linux-x64.AppImage
+./GitHub-Copilot-linux-x64.AppImage</code></pre></div></details>
+        <h2 id="app-preparar-mapa">Onde ficam as partes do app</h2>
+        <figure><div class="screenshot"><a href="./images/copilot-app-linux.png" target="_blank" rel="noopener"><img src="./images/copilot-app-linux.png" width="1920" height="1080" alt="App no Linux: navegação à esquerda, conversa no centro e navegador do quiz à direita."></a><span class="pin" style="left:12%;top:18%" aria-hidden="true">1</span><span class="pin" style="left:40%;top:42%" aria-hidden="true">2</span><span class="pin" style="left:75%;top:10%" aria-hidden="true">3</span><span class="pin" style="left:94%;top:16%" aria-hidden="true">4</span></div><figcaption>Interface do app no Linux. Localize cada área usando os números e a legenda abaixo.</figcaption></figure>
+        <ol class="image-key"><li><strong>New e navegação:</strong> novas sessões e áreas do produto. Dependendo da versão, issues e PRs aparecem separados ou reunidos em <strong>My work</strong>.</li><li><strong>Conversa:</strong> aqui você envia prompts, acompanha alterações e aprova ações.</li><li><strong>Abas de trabalho:</strong> superfícies como navegador, terminal e editor. Use-as para alternar entre código e resultado.</li><li><strong>Pick &amp; Polish:</strong> seleção de elementos do navegador nesta captura. Vamos usar na lição 3.</li></ol>
+        <div class="callout"><strong>Explore por um minuto</strong><p>Confira o nome do projeto, o diretório de trabalho e o modelo selecionado. Localize o campo de prompt e o seletor de modo antes de começar. Para abrir código, use a aba do editor ou peça “abra index.html no editor integrado”.</p></div>
+        <label class="checkpoint"><input type="checkbox" data-checkpoint="app"><span><strong>Concluí a lição 1</strong>Tenho uma sessão na pasta correta e reconheço conversa e prévia.</span></label>
+      </section>
+
+      <section class="lesson" id="app-criar" data-track="Copilot app" data-title="2. Criar e testar o quiz">
+        <p class="eyebrow">Copilot app · 9 minutos · lição 2 de 5</p><h1 tabindex="-1">Criar o quiz da Copa de 2022</h1>
+        <p>Comece criando e testando o quiz na sua máquina. Você vai revisar os arquivos antes de enviá-los ao GitHub.</p>
+        <h2 id="app-criar-prompt">Envie o primeiro prompt</h2>
+        <div class="prompt"><div class="prompt-header"><span>Chat do app</span><button class="copy-button" type="button">Copiar</button></div><pre><code>Crie nesta pasta um quiz em português sobre a Copa do Mundo
+de futebol masculino de 2022, com 10 perguntas e uma única
+resposta correta por questão.
+Use um único index.html, com HTML, CSS e JavaScript no arquivo,
+sem bibliotecas, fontes externas ou servidor.
+
+Inclua progresso, pontuação, feedback de acerto/erro e resultado final
+com opção de jogar novamente. Use um layout responsivo e acessível,
+com foco visível, navegação por teclado e texto além das cores.
+Por enquanto use apenas um tema claro; vamos adicionar a troca
+de tema em uma issue depois.
+
+Crie um README.md explicando a estrutura e como abrir o arquivo.
+Não inicialize Git, crie repositório, faça commit ou push ainda.
+Abra o index.html no navegador integrado, se disponível.</code></pre></div>
+        <p>Revise as solicitações do agente. Se ele apresentar um plano, leia e autorize a execução pelo controle da sua instalação ou pela conversa. O resultado não precisa ter a mesma aparência da captura.</p>
+        <h2 id="app-criar-previa">Encontre a prévia e teste</h2>
+        <p>No print da lição anterior, a prévia fica na aba com o ícone de globo, à direita. Peça para abrir <code>index.html</code> como arquivo local, sem iniciar servidor. Se o navegador integrado não estiver disponível, abra o HTML no navegador do sistema.</p>
+        <ol><li>Escolha uma resposta correta e uma errada; confira a explicação e a pontuação.</li><li>Tente responder duas vezes à mesma pergunta. A pontuação não deve duplicar.</li><li>Complete as 10 perguntas e reinicie. Progresso e pontos devem voltar ao início.</li><li>Use <kbd>Tab</kbd> e <kbd>Enter</kbd> para operar o quiz e confira se o foco é visível. Passe o mouse sobre os botões de avançar e reiniciar e confirme que o texto continua legível.</li></ol>
+        <div class="callout"><strong>Se algo falhar, descreva o que aconteceu</strong><p>Por exemplo: “Na pergunta 3, clicar duas vezes somou dois pontos. Corrija sem reescrever o quiz e verifique esse caso”. Um teste real vale mais que uma confirmação genérica do agente.</p></div>
+        <p><strong>Reserve um minuto para um caso extremo:</strong> reinicie e erre todas as respostas. Confira se o resultado fica em zero e se a mensagem final continua fazendo sentido.</p>
+        <label class="checkpoint"><input type="checkbox" data-checkpoint="app"><span><strong>Concluí a lição 2</strong>O quiz funciona localmente e o reinício limpa o resultado.</span></label>
+      </section>
+
+      <section class="lesson" id="app-inspecionar" data-track="Copilot app" data-title="3. Código e contexto visual">
+        <p class="eyebrow">Copilot app · 6 minutos · lição 3 de 5</p><h1 tabindex="-1">Inspecionar o código e apontar uma mudança</h1>
+        <h2 id="app-inspecionar-codigo">Abra o código, não apenas a página</h2>
+        <div class="prompt"><div class="prompt-header"><span>Chat do app · sem edição</span><button class="copy-button" type="button">Copiar</button></div><pre><code>Abra index.html no editor integrado, se disponível.
+Sem alterar o arquivo, mostre onde estão a estrutura HTML,
+os estilos CSS, as perguntas e as funções de pontuação e reinício.
+Use os nomes reais dos elementos e funções deste arquivo.</code></pre></div>
+        <p>Alterne entre a aba de código e a aba do navegador para comparar o arquivo com a página. Fora do app, use <strong>Abrir com → seu editor</strong> no arquivo. Duplo clique normalmente mostra o quiz, não o código.</p>
+        <h2 id="app-inspecionar-selecao">Use Pick &amp; Polish na prévia</h2>
+        <figure><div class="screenshot"><a href="./images/copilot-app-linux.png" target="_blank" rel="noopener"><img src="./images/copilot-app-linux.png" width="1920" height="1080" alt="Navegador integrado do app, com o botão Pick & Polish na barra superior e opções do quiz abaixo." loading="lazy"></a><span class="pin" style="left:94%;top:16%" aria-hidden="true">1</span><span class="pin" style="left:78%;top:42%" aria-hidden="true">2</span></div><figcaption>1: ferramenta de seleção. 2: área da pergunta. Clique na imagem para ampliar.</figcaption></figure>
+        <ol class="image-key"><li>Na aba do navegador, procure <strong>Pick &amp; Polish</strong>, como no print, ou a ferramenta equivalente de selecionar elemento.</li><li>Ative a seleção e clique no cartão da pergunta. Confira se o chat recebeu o contexto do elemento antes de enviar o pedido abaixo.</li></ol>
+        <div class="prompt"><div class="prompt-header"><span>Chat do app · com contexto do elemento</span><button class="copy-button" type="button">Copiar</button></div><pre><code>Melhore apenas o elemento selecionado: destaque a pergunta,
+organize o espaçamento e deixe as opções mais fáceis de tocar.
+Preserve o quiz, o tema claro e a acessibilidade.
+Não adicione funcionalidades ou dependências.</code></pre></div>
+        <details class="help"><summary>O botão não aparece na minha instalação</summary><p>Descreva o cartão e peça ao agente para localizar seu seletor no arquivo antes de editar. Você também pode citar o identificador real do elemento. O nome e a posição da ferramenta de seleção podem variar conforme sua instalação.</p></details>
+        <p><strong>Reserve um minuto para conferir o escopo:</strong> compare o antes e o depois, localize no código os estilos alterados e confirme que perguntas e pontuação não mudaram.</p>
+        <label class="checkpoint"><input type="checkbox" data-checkpoint="app"><span><strong>Concluí a lição 3</strong>Localizei o código e fiz uma melhoria visual sem alterar as regras do quiz.</span></label>
+      </section>
+
+      <section class="lesson" id="app-issue" data-track="Copilot app" data-title="4. Melhorar por uma issue">
+        <p class="eyebrow">Copilot app · 8 minutos · lição 4 de 5</p><h1 tabindex="-1">Do pedido de melhoria à issue</h1>
+        <p>Adicione uma alternância entre tema claro e escuro. Você vai registrar a melhoria como uma issue, uma tarefa no GitHub com critérios de aceite. Primeiro, coloque o quiz em um repositório de teste seu.</p>
+        <h2 id="app-issue-repo">Conecte um repositório seu</h2>
+        <div class="prompt"><div class="prompt-header"><span>Chat do app · revisar antes de enviar</span><button class="copy-button" type="button">Copiar</button></div><pre><code>Confira se esta pasta já é um repositório Git e se há um remoto.
+Quero versionar o quiz em um repositório de teste na MINHA conta,
+com nome disponível baseado em quizz-copas.
+Mostre quais arquivos serão enviados, a visibilidade proposta,
+a branch e os passos de criação e envio.
+Não substitua repositórios existentes nem exponha segredos.
+Espere minha confirmação antes de inicializar Git, criar o repo,
+fazer commit ou push.</code></pre></div>
+        <p>Confira sua conta, a visibilidade e os arquivos. Depois autorize explicitamente o plano. Conecte o repositório ao projeto no app se necessário; uma sessão baseada em pasta pode não ganhar automaticamente os controles Git.</p>
+        <h2 id="app-issue-criar">Crie a issue de tema</h2>
+        <div class="prompt"><div class="prompt-header"><span>Chat do app · ação no GitHub</span><button class="copy-button" type="button">Copiar</button></div><pre><code>No repositório de teste que acabamos de confirmar, crie uma issue
+para alternar entre tema claro e escuro.
+Critérios de aceite: botão acessível pelo teclado, rótulo claro,
+contraste legível nos dois temas e preferência inicial do sistema.
+Mantenha o index.html único e não use dependências.
+Não implemente ainda. Informe o link da issue criada.</code></pre></div>
+        <p>Abra <strong>My work</strong> para encontrar issues e PRs. Se sua versão mostrar essas áreas separadas, use <strong>Issues</strong>, como na captura. Localize a tarefa pelo número e pelo repositório correto, não apenas pelo título. Consulte o <a href="https://docs.github.com/en/copilot/how-tos/github-copilot-app/managing-issues-and-pull-requests">guia de issues e PRs</a> se necessário.</p>
+        <h2 id="app-issue-implementar">Implemente e confira o diff</h2>
+        <p>Se a interface oferecer “trabalhar na issue” ou iniciar sessão, use essa opção. Caso contrário, continue na sessão do repositório com o número/link explícito.</p>
+        <div class="prompt"><div class="prompt-header"><span>Chat do app · substitua o número</span><button class="copy-button" type="button">Copiar</button></div><pre><code>Implemente somente a issue #NUMERO que acabamos de criar.
+Leia os critérios de aceite e preserve as perguntas e a pontuação.
+Verifique o botão por teclado e os dois temas.
+Mostre o diff e o que foi realmente testado.
+Não faça commit, push ou merge sem minha aprovação.</code></pre></div>
+        <p>Em sessões Git, a documentação indica <strong>Changes</strong> acima do campo de prompt para conferir alterações. Sem esse controle, peça o diff ao agente. Leia antes de autorizar o envio.</p>
+        <p><strong>Reserve um minuto para revisar os critérios:</strong> confira o botão com <kbd>Tab</kbd>, alterne os dois temas e verifique que o texto continua legível. Relacione cada teste a um critério da issue.</p>
+        <div class="callout warning"><strong>Sem permissão para criar repo ou issue?</strong><p>Não use a conta do facilitador. Anote os critérios na conversa, peça a implementação local e marque a etapa como prática local. A indisponibilidade de uma operação no GitHub não impede aprender o ciclo.</p></div>
+        <label class="checkpoint"><input type="checkbox" data-checkpoint="app"><span><strong>Concluí a lição 4</strong>Testei a alternância e revisei as alterações, com issue ou com critérios locais.</span></label>
+      </section>
+
+      <section class="lesson" id="app-pages" data-track="Copilot app" data-title="5. Planejar e publicar">
+        <p class="eyebrow">Copilot app · 7 minutos · lição 5 de 5</p><h1 tabindex="-1">Planejar o deploy no GitHub Pages</h1>
+        <p>Prepare a publicação do quiz no GitHub Pages. Comece por um plano e confira as alterações necessárias antes de executá-las. A publicação depende do tempo e das permissões do seu repositório.</p>
+        <h2 id="app-pages-plano">Planeje antes de editar</h2>
+        <p>Escolha <strong>Plan</strong> no seletor de modo da sessão, se disponível. Não confunda com o seletor de modelo. Se não encontrar esse controle, o prompt abaixo pede explicitamente uma pausa antes de executar.</p>
+        <div class="prompt"><div class="prompt-header"><span>Modo Plan ou conversa do app</span><button class="copy-button" type="button">Copiar</button></div><pre><code>Planeje o deployment deste quiz no GitHub Pages via GitHub Actions.
+Confira a branch padrão, o index.html, os arquivos a publicar,
+a configuração existente de Pages e as permissões disponíveis.
+Não substitua um site ou workflow já existente.
+Quero publicar só os arquivos do quiz e documentar no README.
+Explique o workflow, a URL esperada e como verificar o deploy.
+Não edite, envie ou publique nada antes da minha aprovação.</code></pre></div>
+        <h2 id="app-pages-deploy">Se houver tempo, publique</h2>
+        <ol><li>Revise e autorize a implementação. Confira o workflow e o README antes de permitir commit, push ou PR.</li><li>No GitHub do seu repositório, vá a <strong>Settings → Pages → Build and deployment → Source → GitHub Actions</strong>. Você precisa de permissão para configurar.</li><li>Depois que o workflow chegar à branch correta, acompanhe a execução em <strong>Actions</strong>.</li><li>Abra a URL informada pelo deploy, teste a página e o tema. Um link previsto não comprova publicação.</li></ol>
+        <p><strong>Reserve um minuto para revisar o plano:</strong> identifique quais arquivos serão publicados, como reconhecer um deploy bem-sucedido e qual será o próximo passo se uma etapa falhar.</p>
+        <div class="callout"><strong>Resultado da trilha App</strong><p>Quiz da Copa criado, código explorado, alteração visual e tema verificados. Se não houve deploy, o plano e a permissão pendente devem estar claros. Continue para a CLI para comparar a mesma ideia no terminal.</p></div>
+        <label class="checkpoint"><input type="checkbox" data-checkpoint="app"><span><strong>Concluí a lição 5</strong>Revisei o plano e conferi a publicação, ou identifiquei o requisito que falta.</span></label>
+      </section>
+
+      <section class="lesson" id="cli-preparar" data-track="Copilot CLI" data-title="1. Preparar o terminal">
+        <p class="eyebrow">Copilot CLI · 5 minutos · lição 1 de 5</p><h1 tabindex="-1">Preparar o Copilot no terminal</h1>
+        <p>Você vai criar um quiz de capitais com 6 perguntas. No Copilot CLI, a conversa com o agente e as aprovações de ações acontecem no terminal.</p>
+        <h2 id="cli-preparar-instalar">Instale a CLI e faça login</h2>
+        <p>Instale o pacote estável seguindo o <a href="https://docs.github.com/en/copilot/get-started/cli-quickstart">quickstart oficial</a>. A instalação por npm requer <strong>Node.js 22 ou posterior</strong>. Se já tiver a CLI, não é necessário reinstalar.</p>
+        <div class="prompt"><div class="prompt-header"><span>Terminal do sistema · não é um prompt para o agente</span><button class="copy-button" type="button">Copiar</button></div><pre><code>npm install -g @github/copilot
+copilot version
+mkdir cidades-quizz
+cd cidades-quizz
+copilot</code></pre></div>
+        <p>Use uma pasta nova; se <code>cidades-quizz</code> já existir, escolha outro nome e não sobrescreva. Ao abrir o Copilot, confira o diretório e a solicitação de confiança. Para autenticar, digite <code>/login</code> dentro da sessão e siga as instruções.</p>
+        <details class="help"><summary>Não uso npm ou não tenho Node.js 22</summary><p>Escolha uma alternativa documentada, sem executar todas: no Windows, <code>winget install GitHub.Copilot</code>; com Homebrew em macOS/Linux, <code>brew install --cask copilot-cli</code>. Depois, crie a pasta de teste e execute <code>copilot</code>. Consulte o quickstart se houver erro de instalação.</p></details>
+        <h2 id="cli-preparar-mapa">Reconheça a interface no terminal</h2>
+        <figure><div class="screenshot"><a href="./images/copilot-cli-linux.png" target="_blank" rel="noopener"><img src="./images/copilot-cli-linux.png" width="1920" height="1080" alt="Copilot CLI no Linux: histórico de operações, resultado de deploy, campo de entrada e rodapé Interactive Manual Approval." loading="lazy"></a><span class="pin" style="left:44%;top:17%" aria-hidden="true">1</span><span class="pin" style="left:30%;top:94%" aria-hidden="true">2</span><span class="pin" style="left:18%;top:98%" aria-hidden="true">3</span></div><figcaption>Interface da CLI no Linux, com uma sessão em andamento. Use a legenda para localizar o histórico, a entrada e o modo de aprovação.</figcaption></figure>
+        <ol class="image-key"><li><strong>Histórico e operações:</strong> o agente mostra ações de shell e resultados. Leia antes de aprovar novas operações.</li><li><strong>Entrada:</strong> aqui você escreve prompts e comandos da sessão, como <code>/help</code>.</li><li><strong>Rodapé:</strong> a captura indica <strong>Interactive · Manual Approval</strong>. Não habilite execução irrestrita para seguir este laboratório.</li></ol>
+        <p><code>/help</code> mostra os comandos disponíveis na sua versão. <kbd>Esc</kbd> cancela a operação atual. <code>gh</code>, quando necessário para repositórios e issues, é o GitHub CLI, uma ferramenta separada.</p>
+        <p><strong>Explore por um minuto:</strong> abra <code>/help</code>, localize os comandos de contexto e planejamento e confirme como sair da ajuda para voltar ao prompt.</p>
+        <label class="checkpoint"><input type="checkbox" data-checkpoint="cli"><span><strong>Concluí a lição 1</strong>Estou na sessão do Copilot CLI, autenticado e em uma pasta de teste.</span></label>
+      </section>
+
+      <section class="lesson" id="cli-criar" data-track="Copilot CLI" data-title="2. Criar e testar o quiz">
+        <p class="eyebrow">Copilot CLI · 9 minutos · lição 2 de 5</p><h1 tabindex="-1">Criar o quiz de capitais</h1>
+        <h2 id="cli-criar-prompt">Envie o prompt no Copilot</h2>
+        <div class="prompt"><div class="prompt-header"><span>Dentro do Copilot CLI · não cole no shell</span><button class="copy-button" type="button">Copiar</button></div><pre><code>Crie nesta pasta um quiz em português com 6 perguntas
+sobre capitais de países, com uma única resposta correta por questão.
+Use um único index.html com HTML, CSS e JavaScript,
+sem dependências, fontes externas ou servidor.
+Inclua pontuação, feedback em texto e cores, resultado final
+e botão para jogar novamente. Garanta teclado e foco visível.
+Comece com um tema claro; a troca de tema será uma melhoria depois.
+Crie um README.md explicando a estrutura e como abrir o HTML.
+Não inicialize Git, crie repositório, faça commit ou push ainda.
+Informe o caminho do index.html para eu testar no navegador.</code></pre></div>
+        <p>Autorize somente ações que façam sentido para a pasta de teste. Ao contrário da trilha App, <strong>não presuma que exista uma prévia integrada no terminal</strong>.</p>
+        <h2 id="cli-criar-abrir">Abra no navegador do sistema</h2>
+        <p>Abra a pasta pelo gerenciador de arquivos e dê duplo clique em <code>index.html</code>. Se preferir, use apenas o comando do seu sistema em <strong>outro terminal</strong>, dentro da pasta do quiz:</p>
+        <div class="prompt"><div class="prompt-header"><span>macOS · terminal do sistema</span><button class="copy-button" type="button">Copiar</button></div><pre><code>open index.html</code></pre></div>
+        <p>Em Windows/PowerShell: <code>Start-Process .\index.html</code>. Em Linux com ambiente gráfico: <code>xdg-open index.html</code>. Isso abre o arquivo local, sem instalar servidor.</p>
+        <h2 id="cli-criar-testar">Faça uma partida completa</h2>
+        <ol><li>Responda uma pergunta corretamente e outra incorretamente.</li><li>Confira que clicar novamente não muda a pontuação.</li><li>Complete as 6 perguntas e reinicie. Verifique pontuação e resultado.</li><li>Teste <kbd>Tab</kbd> e <kbd>Enter</kbd> e passe o mouse sobre os botões de avançar e reiniciar para conferir a legibilidade. Volte à CLI e descreva qualquer falha com passos para reproduzir.</li></ol>
+        <div class="callout"><strong>Teste manual não é teste executado pelo agente</strong><p>Se o agente apenas leu o código, ele deve dizer isso. Você pode pedir verificações adicionais, mas não precisa instalar um navegador automatizado para este exercício.</p></div>
+        <p><strong>Reserve um minuto para um caso extremo:</strong> reinicie e erre todas as respostas. Confira o resultado zero e tente acionar uma opção novamente para verificar que a pontuação não muda.</p>
+        <label class="checkpoint"><input type="checkbox" data-checkpoint="cli"><span><strong>Concluí a lição 2</strong>Abri o HTML no navegador e terminei uma partida de 6 perguntas.</span></label>
+      </section>
+
+      <section class="lesson" id="cli-revisar" data-track="Copilot CLI" data-title="3. Conferir código e alterações">
+        <p class="eyebrow">Copilot CLI · 6 minutos · lição 3 de 5</p><h1 tabindex="-1">Conferir antes de autorizar</h1>
+        <h2 id="cli-revisar-entender">Use o arquivo como contexto</h2>
+        <p>Na CLI, você pode mencionar arquivos com <code>@</code>. Digite <code>@index.html</code> e selecione o arquivo se aparecer uma lista. Peça uma explicação que use os nomes reais do seu código.</p>
+        <div class="prompt"><div class="prompt-header"><span>Dentro do Copilot CLI</span><button class="copy-button" type="button">Copiar</button></div><pre><code>Leia @index.html sem editar.
+Explique onde estão o HTML, o CSS, a lista das perguntas,
+os eventos de resposta, a pontuação e o reinício.
+Aponte como você verificaria que uma pergunta só pontua uma vez.</code></pre></div>
+        <h2 id="cli-revisar-melhoria">Faça uma mudança pequena</h2>
+        <div class="prompt"><div class="prompt-header"><span>Dentro do Copilot CLI</span><button class="copy-button" type="button">Copiar</button></div><pre><code>Melhore somente o espaçamento e o tamanho de toque dos botões.
+Preserve o tema claro, as 6 perguntas e a pontuação.
+Não adicione dependências ou funcionalidades.
+Ao terminar, mostre quais trechos mudou e separe
+o que foi testado do que foi apenas revisado no código.</code></pre></div>
+        <p>Recarregue o navegador e compare. Não há seleção de elemento do navegador nesse fluxo: o equivalente é fornecer arquivo, seletor real e descrição precisa do resultado esperado.</p>
+        <h2 id="cli-revisar-diff">Confira o diff quando houver Git</h2>
+        <p>Use <code>/diff</code> para revisar alterações, se disponível em <code>/help</code>. Se a pasta ainda não é um repositório ou não há uma base versionada, peça os trechos antes/depois; a etapa seguinte cria o contexto Git. Um diff vazio não significa que não existem arquivos novos.</p>
+        <div class="callout"><strong>Três coisas diferentes</strong><p>O prompt diz o que você quer. A aprovação autoriza uma ação. O diff mostra o que realmente mudou. Uma boa colaboração precisa das três, não apenas de uma resposta confiante.</p></div>
+        <p><strong>Reserve um minuto para explorar o contexto:</strong> se disponível em <code>/help</code>, use <code>/context</code> para visualizar o consumo da janela de contexto e o espaço disponível. Esse comando não é uma lista dos arquivos lidos. Para direcionar a análise de um arquivo, mencione <code>@index.html</code> no pedido.</p>
+        <label class="checkpoint"><input type="checkbox" data-checkpoint="cli"><span><strong>Concluí a lição 3</strong>Entendi o código e conferi uma alteração pequena no arquivo e no navegador.</span></label>
+      </section>
+
+      <section class="lesson" id="cli-issue" data-track="Copilot CLI" data-title="4. Melhorar por uma issue">
+        <p class="eyebrow">Copilot CLI · 8 minutos · lição 4 de 5</p><h1 tabindex="-1">Criar uma issue e implementar no terminal</h1>
+        <p>Adicione a alternância entre tema claro e escuro. Registre os critérios em uma issue e use a conversa no terminal para orientar, aprovar e conferir a implementação.</p>
+        <h2 id="cli-issue-repo">Publique o código na sua conta</h2>
+        <div class="prompt"><div class="prompt-header"><span>Dentro do Copilot CLI · revisar antes de enviar</span><button class="copy-button" type="button">Copiar</button></div><pre><code>Confira o estado Git desta pasta e a conta GitHub autenticada.
+Quero criar um repositório de teste na MINHA conta com nome disponível
+baseado em cidades-quizz.
+Mostre a visibilidade, os arquivos a enviar, a branch e os passos.
+Não substitua repositórios existentes e confira se há segredos.
+Espere minha confirmação antes de inicializar Git,
+criar repositório, fazer commit ou push.</code></pre></div>
+        <p>Revise e autorize o plano. O agente pode precisar do <code>gh</code> ou de outra integração autenticada. Se faltar alguma ferramenta, confirme a necessidade antes de instalar. Nunca cole tokens na conversa ou no código.</p>
+        <h2 id="cli-issue-criar">Crie e leia a issue</h2>
+        <div class="prompt"><div class="prompt-header"><span>Dentro do Copilot CLI · ação no GitHub</span><button class="copy-button" type="button">Copiar</button></div><pre><code>No repositório de teste confirmado, crie uma issue para alternância
+entre tema claro e escuro: botão acessível por teclado,
+rótulo claro, preferência inicial do sistema e contraste legível.
+Mantenha o arquivo único e sem dependências.
+Não implemente ainda. Informe o número e o link da issue.</code></pre></div>
+        <h2 id="cli-issue-implementar">Peça a implementação e revise</h2>
+        <div class="prompt"><div class="prompt-header"><span>Dentro do Copilot CLI · substitua o número</span><button class="copy-button" type="button">Copiar</button></div><pre><code>Leia e implemente somente a issue #NUMERO deste repositório.
+Preserve as perguntas e a pontuação.
+Mostre o diff e explique como verificar teclado e os dois temas.
+Não faça commit, push ou merge sem minha aprovação.</code></pre></div>
+        <p>Confira <code>/diff</code>, se disponível, ou peça o diff Git ao agente. No navegador, recarregue e teste o botão, o contraste e o foco. Depois autorize o envio se estiver satisfeito.</p>
+        <p><strong>Reserve um minuto para revisar os critérios:</strong> compare a issue com o diff e com a página. Confirme que a mudança não alterou as 6 perguntas nem a regra de pontuação.</p>
+        <div class="callout warning"><strong>Sem acesso ao GitHub?</strong><p>Use os critérios acima como tarefa local na conversa. Registre que a issue não foi criada. Não substitua uma falha de autenticação por uma mensagem dizendo que o trabalho foi publicado.</p></div>
+        <label class="checkpoint"><input type="checkbox" data-checkpoint="cli"><span><strong>Concluí a lição 4</strong>Implementei a melhoria e conferi o diff e os temas, com issue ou tarefa local.</span></label>
+      </section>
+
+      <section class="lesson" id="cli-pages" data-track="Copilot CLI" data-title="5. Planejar e publicar">
+        <p class="eyebrow">Copilot CLI · 7 minutos · lição 5 de 5</p><h1 tabindex="-1">Planejar e acompanhar o deploy</h1>
+        <h2 id="cli-pages-plano">Use Plan para discutir a abordagem</h2>
+        <p>Use <code>/plan</code> seguido do pedido abaixo para discutir a abordagem antes de executar. Confira a disponibilidade com <code>/help</code>. Se o comando não existir, envie o pedido em linguagem natural, mantendo a pausa antes de editar.</p>
+        <div class="prompt"><div class="prompt-header"><span>Dentro do Copilot CLI</span><button class="copy-button" type="button">Copiar</button></div><pre><code>/plan Planeje publicar este quiz no GitHub Pages via GitHub Actions.
+Confira branch padrão, index.html, configuração existente e permissões.
+Não sobrescreva workflows ou sites existentes.
+Publique apenas arquivos do site, sem dependências ou build desnecessários.
+Inclua instruções no README e explique como verificar a URL final.
+Espere minha aprovação antes de editar, configurar o GitHub ou publicar.</code></pre></div>
+        <h2 id="cli-pages-evidencia">Reconheça o diagnóstico e o resultado</h2>
+        <figure><div class="screenshot"><a href="./images/copilot-cli-linux.png" target="_blank" rel="noopener"><img src="./images/copilot-cli-linux.png" width="1920" height="1080" alt="Histórico de deploy: falha em Configure Pages, habilitação de Pages e publicação concluída com URL e confirmação HTTP 200." loading="lazy"></a><span class="pin" style="left:44%;top:16%" aria-hidden="true">1</span><span class="pin" style="left:44%;top:37%" aria-hidden="true">2</span><span class="pin" style="left:33%;top:80%" aria-hidden="true">3</span></div><figcaption>Exemplo de diagnóstico de falha e confirmação de publicação. Confira esses sinais na execução do seu próprio repositório.</figcaption></figure>
+        <ol class="image-key"><li><strong>Falha em Configure Pages:</strong> criar o workflow não basta se o Pages estiver desabilitado.</li><li><strong>Causa e correção:</strong> o histórico indica habilitação de Pages com fonte GitHub Actions. Isso exige permissão; não autorize alterações fora do seu repo de teste.</li><li><strong>URL e verificação:</strong> o resultado mostra a URL publicada e uma resposta HTTP 200. Confira também o quiz visualmente; HTTP 200 não testa suas regras.</li></ol>
+        <h2 id="cli-pages-publicar">Aprove e verifique, se houver tempo</h2>
+        <ol><li>Revise o plano e autorize a implementação. Leia o workflow antes do commit e envio.</li><li>Se precisar habilitar manualmente: no GitHub, <strong>Settings → Pages → Source → GitHub Actions</strong>.</li><li>Acompanhe a execução em <strong>Actions</strong> ou peça ao agente para mostrar o status real e o log da etapa que falhar.</li><li>Abra a URL produzida pelo deploy, complete o quiz e teste os temas.</li></ol>
+        <p><strong>Reserve um minuto para revisar o plano:</strong> confira qual repositório e branch receberão a publicação. Se já publicou, compare o quiz online com o local; se ainda não, registre a próxima ação necessária.</p>
+        <div class="callout"><strong>Você completou o ciclo</strong><p>As interfaces mudam, mas a disciplina é a mesma: contexto claro, mudanças pequenas, revisão, autorização e verificação. Se o tempo acabou, guarde o plano e registre o próximo passo em vez de publicar às pressas.</p></div>
+        <p>Para continuar depois: <a href="https://github-samples.github.io/copilot-workshops/first-steps/copilot-cli/">workshop completo de Copilot CLI</a>, <a href="https://github-samples.github.io/copilot-workshops/first-steps/copilot-app/">workshop completo do app</a> e <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages">documentação de GitHub Pages</a>.</p>
+        <label class="checkpoint"><input type="checkbox" data-checkpoint="cli"><span><strong>Concluí a lição 5</strong>Revisei o plano e validei o deploy ou registrei o impedimento real.</span></label>
+        <p><a href="#visao-geral">← Voltar à visão geral das duas trilhas</a></p>
+      </section>
+
+      <nav class="page-navigation" aria-label="Anterior e próxima lição"><a id="previous" href="#visao-geral"><small>Anterior</small>Visão geral</a><a id="next" href="#app-preparar"><small>Próxima</small>Preparar e se localizar</a></nav>
+      <footer>Dev Days · Taboão da Serra · 17/10/2026<br><a href="./NOTICE.txt">MIT · atribuição e licença</a> · <a href="https://github.com/DotNetSP/dev-days-2026-10-taboao-sp">Código e slides</a></footer>
+    </main>
+    <aside class="on-this-page" aria-label="Índice da lição"><h2>Nesta página</h2><nav id="page-toc"></nav></aside>
+  </div>
+  <p class="sr-only" role="status" aria-live="polite" id="interaction-status"></p>
+  <noscript><p class="callout">JavaScript desativado: todas as lições ficam visíveis para leitura. A navegação entre etapas, busca, cópia e checkpoints interativos dependem de JavaScript.</p></noscript>
+</body>
+</html>
